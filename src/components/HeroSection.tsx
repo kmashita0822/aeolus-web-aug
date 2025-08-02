@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import DisasterAlerts from './DisasterAlerts'
 
 const HeroSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      // Add event listeners for debugging
+      video.addEventListener('loadstart', () => console.log('Video loadstart'))
+      video.addEventListener('loadeddata', () => console.log('Video loadeddata'))
+      video.addEventListener('canplay', () => console.log('Video canplay'))
+      video.addEventListener('play', () => console.log('Video play'))
+      video.addEventListener('error', (e) => console.error('Video error:', e))
+      
+      // Try to play the video
+      video.play().catch(error => {
+        console.error('Video play failed:', error)
+      })
+    }
+  }, [])
+
   return (
     <section className="hero-section">
       <div className="video-container">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata">
+        <video 
+          ref={videoRef}
+          className="hero-video" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          preload="metadata"
+          onError={(e) => console.error('Video error event:', e)}
+        >
           <source src="/assets/aeolus.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>

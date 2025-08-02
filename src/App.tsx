@@ -7,6 +7,10 @@ import DetailModal from './components/DetailModal'
 const App: React.FC = () => {
   return (
     <>
+      <div style={{ color: 'white', padding: '20px', background: 'black', minHeight: '100vh' }}>
+        <h1>React App is Loading!</h1>
+        <p>If you can see this, React is working.</p>
+      </div>
       <HeroSection />
       <ContentSection />
       <ThirdSection />
