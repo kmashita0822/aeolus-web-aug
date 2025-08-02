@@ -2,17 +2,15 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
+      "source": "/assets/(.*)",
+      "destination": "/public/assets/$1"
     },
     {
-      "src": "/styles.css",
-      "dest": "/public/styles.css"
-    }
-  ],
-  "rewrites": [
+      "source": "/styles.css",
+      "destination": "/public/styles.css"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
