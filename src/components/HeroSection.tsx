@@ -6,9 +6,6 @@ const HeroSection: React.FC = () => {
     <section className="hero-section">
       <div className="video-container">
         <video className="hero-video" autoPlay muted loop playsInline preload="metadata">
-          {/* Production video - hosted on reliable CDN */}
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-          {/* Local development fallback */}
           <source src="/assets/aeolus.mov" type="video/quicktime" />
           <source src="/assets/aeolus.mov" type="video/mp4" />
           Your browser does not support the video tag.
