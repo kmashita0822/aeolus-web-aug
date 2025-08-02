@@ -27,10 +27,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "dist/**/*.html": {
-      "maxDuration": 10
-    }
-  }
+  ]
 } 
