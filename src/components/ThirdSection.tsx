@@ -5,13 +5,12 @@ const ThirdSection: React.FC = () => {
     <section className="third-section">
       <div className="image-container">
         <img className="third-image" src="/assets/ourfuture.png" alt="Our Future" />
+        <div className="third-overlay"></div>
       </div>
-      <div className="third-overlay"></div>
-
-      {/* Third section text block */}
+      
       <div className="third-text-block">
         <p className="third-text">
-          Building on that promise, we're learning to harness Earth's natural energy flows, powering a civilization that grows with its home, not away from it.
+          Our future is not predetermined. It's shaped by the choices we make today, the technologies we develop, and the systems we build to protect what matters most.
         </p>
       </div>
     </section>
