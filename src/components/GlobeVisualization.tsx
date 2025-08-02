@@ -1,9 +1,8 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 import * as topojson from "topojson-client"
-import useMobile from "@/hooks/use-mobile"
 
 // Import GeoJSON types
 import type { Position as GeoJSONPosition } from "geojson"
@@ -297,15 +296,22 @@ class ParticleGlobe {
 export default function GlobeVisualization() {
   const ref = useRef<HTMLCanvasElement>(null)
   const globeRef = useRef<ParticleGlobe | null>(null)
-  const isMobile = useMobile()
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth < 768) // Assuming a breakpoint for mobile
+    }
+    updateIsMobile() // Set initial value
+    window.addEventListener("resize", updateIsMobile)
+
     if (ref.current) {
       globeRef.current = new ParticleGlobe(ref.current, isMobile)
     }
 
     // Clean up on unmount
     return () => {
+      window.removeEventListener("resize", updateIsMobile)
       if (globeRef.current) {
         globeRef.current.dispose()
         globeRef.current = null
